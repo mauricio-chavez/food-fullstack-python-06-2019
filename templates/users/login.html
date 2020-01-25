@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Login</title>
+  </head>
+  <body>
+    {% if request.GET.next %}
+    <p style="color: red; border-color: red; border-width: 1px">
+      Debes autenticarte para continuar
+    </p>
+
+    {% endif %} {% if error %}
+    <p style="color: red; border-color: red; border-width: 1px">
+      {{ error }}
+    </p>
+    {% endif %} {% for message in messages %}
+    <p style="color: green; border-color: green; border-width: 1px;">
+      {{ message }}
+    </p>
+    {% endfor %}
+
+    <h1 style="color: tomato">Ingresa tus datos</h1>
+    <form action="{% url 'users:login' %}" method="post">
+      {% csrf_token %}
+      <p>
+        <label for="username-id">Username:</label>
+        <input type="text" name="username" id="username-id" />
+      </p>
+      <p>
+        <label for="password-id">Password:</label>
+        <input type="password" name="password" id="password-id" />
+      </p>
+      <button style="background-color: blue; color: white" type="submit">
+        ¡Iniciar sesión!
+      </button>
+    </form>
+    <p>
+      ¿No tienes cuenta?
+      <a href="{% url 'users:signup' %}">Regístrate</a>
+    </p>
+  </body>
+</html>

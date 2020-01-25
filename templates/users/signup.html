@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Signup</title>
+  </head>
+  <body>
+    {% if error %}
+    <p style="color: red; border-color: red; border-width: 1px">
+      {{ error }}
+    </p>
+    {% endif %}
+
+    <h1 style="color: tomato">Regístrate</h1>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button style="background-color: blue; color: white" type="submit">
+        ¡Enviar!
+      </button>
+    </form>
+    <p>
+      ¿Ya tienes una cuenta?
+      <a href="{% url 'users:login' %}">Iniciar sesión</a>
+    </p>
+  </body>
+</html>

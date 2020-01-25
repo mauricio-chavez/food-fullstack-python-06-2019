@@ -8,6 +8,14 @@
   </head>
   <body>
     <h1>Donuts</h1>
+
+    <p>Hola, @{{request.user.username}}</p>
+    <a href="{% url 'users:logout' %}">
+      <button>
+        Logout
+      </button>
+    </a>
+
     <ul>
       {% for donut in donuts %}
       <li>{{donut.name}} - ${{donut.price}}</li>
